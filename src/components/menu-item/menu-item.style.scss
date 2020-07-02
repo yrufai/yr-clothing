@@ -1,5 +1,5 @@
   .menu-item {
-    min-width: 30%;
+    min-width: 40%;
     height: 240px;
     flex: 1 1 auto;
     display: flex;
@@ -9,24 +9,21 @@
     margin: 0 7.5px 15px;
     overflow: hidden;
     
-   
 
-    & :hover {
+    &:hover {
       cursor: pointer;
-    
-      & .background-image {
+      &.background-image {
         transform: scale(1.2);
         transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
       }
-    
-      & .content {
+      &.content {
         opacity: 0.9;
       }
     }
     
     
     &.large{
-      height: 380px;
+      height: 450px;
     }
   
     &:first-child {
