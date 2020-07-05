@@ -1,18 +1,19 @@
 import React from "react";
-
-import "./preview-collection.style.scss";
-import { findAllByTitle } from "@testing-library/dom";
+import CollectionItem from "../collection-item/collection-item.component";
+import "./preview.collection.style.scss";
 
 const PreviewCollection = ({ title, items }) => (
     <div className="collection-preview">
         <h1 className="title" >{title.toUpperCase()} </h1>
         <div className="preview">
-            {items.map(item => (
-                <div key={item.id} >{item} </div>
-            ))}
+            {items
+                .filter((item, index) => index < 4)
+                .map(({ id, ...otherProps }) => (
+                    <CollectionItem key={id} {...otherProps} />
+                ))}
         </div>
     </div>
 )
 
 
-export default PreviewCollection
+export default PreviewCollection;
