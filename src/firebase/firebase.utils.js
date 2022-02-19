@@ -1,41 +1,31 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
-
-const Config = {
-  apiKey: "AIzaSyBQZNX4ZovZCJCiRiIzwr1zcjpmgm-YGb8",
-  authDomain: "yr-clothing.firebaseapp.com",
-  databaseURL: "https://yr-clothing.firebaseio.com",
-  projectId: "yr-clothing",
-  storageBucket: "yr-clothing.appspot.com",
-  messagingSenderId: "577917917720",
-  appId: "1:577917917720:web:4b11ba3c5257a9e346416d",
-  measurementId: "G-1QC0Q4QYEV",
-};
+import Config from "../config";
 
 export const createUserProfileDocument = async (userAuth, otherData) => {
-  if (!userAuth) return;
+	if (!userAuth) return;
 
-  const userRef = firestore.doc(`users/${userAuth.uid}`);
-  const snapshot = await userRef.get();
+	const userRef = firestore.doc(`users/${userAuth.uid}`);
+	const snapshot = await userRef.get();
 
-  if (!snapshot.exists) {
-    const { displayName, email } = userAuth;
-    const createdAt = new Date();
+	if (!snapshot.exists) {
+		const { displayName, email } = userAuth;
+		const createdAt = new Date();
 
-    try {
-      await userRef.set({
-        displayName,
-        email,
-        createdAt,
-        ...otherData,
-      });
-    } catch (error) {
-      console.log("error creating user", error.message);
-    }
-  }
+		try {
+			await userRef.set({
+				displayName,
+				email,
+				createdAt,
+				...otherData,
+			});
+		} catch (error) {
+			console.log("error creating user", error.message);
+		}
+	}
 
-  return userRef;
+	return userRef;
 };
 
 firebase.initializeApp(Config);
