@@ -10,6 +10,7 @@ import { setCurrentUser } from "./redux/user/user.action";
 import "./App.css";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import CheckoutPage from "./pages/checkout/checkout.component";
 
 class App extends Component {
 	unsubscribeFromAuth = null;
@@ -39,6 +40,7 @@ class App extends Component {
 				<Switch>
 					<Route exact path="/" component={HomePage} />
 					<Route path="/shop" component={ShopPage} />
+					<Route path="/checkout" component={CheckoutPage} />
 					<Route
 						exact
 						path="/signin"
